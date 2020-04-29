@@ -1,0 +1,271 @@
+@font-face {
+  font-family: "Font of Tolkien";
+  src: url("../../../assets/Fonts/tolkien.ttf");
+}
+
+body{
+  font-family: "Font of Tolkien";
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.helth {
+  width: 90%;
+  text-align: center;
+}
+
+.container-ficha {
+  background-image: url("../../../assets/Images/backgroundFichaPlayer.jpg");
+  background-repeat: no-repeat;
+  background-size:100%;
+  bottom: 0;
+  color: black;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-size: cover;
+  font-family: "Font of Tolkien";
+  font-weight: bold;
+}
+
+.lin1 {
+display: grid;
+grid-template-columns: 1.2fr .9fr .9fr 1fr 1fr .9fr;
+padding-top: 5px;
+padding-left: 30px;
+}
+
+.container-ficha2 {
+  display: grid;
+  grid-template-columns: .5fr .5fr .2fr .2fr .2fr .2fr .2fr .2fr;
+  padding-right: 10px;
+  padding-left: 20px;
+  }
+
+  .manna{
+    width: 90%;
+    text-align: center;
+  }
+
+  .equipamentos {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .h3Equipamentos {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .h3Grimorio {
+    margin-left: 42vh;
+    font-weight: bold;
+  }
+
+  .h3Inventario {
+    margin-top: 5vh;
+    margin-left: 42vh;
+    font-weight: bold;
+  }
+
+
+  .maoEsq, .maoDir, .helm, .arm, .bot, .grim, .inv {
+    width: 100%;
+  }
+
+  .armadura {
+    margin-top: 10px;
+  }
+
+  .grimorio {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 2vh;
+  }
+
+  .inventario {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 2vh;
+  }
+
+.build {
+  margin-left: 120px !important;
+  width: 300px !important;
+  margin-top: 70px;
+  height: 80px;
+}
+
+.estiloLabelAtributos {
+  font-family: "Font of Tolkien" !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  margin-bottom: 35px !important;
+  width: 100px !important;
+}
+
+.estiloLabel {
+  font-family: "Font of Tolkien" !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  margin-bottom: 35px !important;
+}
+
+.statusTotal {
+display: grid;
+grid-template-columns: .1fr .1fr .1fr .1fr .1fr .1fr;  
+padding-top: 1vh;
+}
+
+
+.botaoBuid {
+  font-family: "Font of Tolkien" !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  width: 80% !important;
+  font-size: 20px !important;
+  border-radius: 20px !important;
+  background-color: #fab95f !important;
+}
+
+.linhaBotoes {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+}
+
+.idHelmo, .idArmadura, .idMaoDireita, .idMaoEsquerda, .idBota{
+  display: none;
+}
+
+.h3Status{
+  margin-left: 50vh;
+  font-weight: bold;
+  margin-top: 2vh;
+}
+
+.EstiloSelect{
+  font-family: "Font of Tolkien" !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+
+.equipamentos-grimorio-inventario {
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+}
+
+.maoDireita {
+  margin-top: 27.5vh;
+}
+
+.maoEsquerda {
+  margin-top: 27.5vh;
+}
+
+.botas {
+  margin-top: 11.3vh;
+}
+
+.pocoes {
+  margin-left: 18vh;
+}
+
+.linhaHp {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto; 
+}
+
+.linhaMp {
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.hp25 {
+  background-image: url("../../../assets/Images/poções/hp25.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.hp50 {
+  background-image: url("../../../assets/Images/poções/hp50.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.hp100     {
+  background-image: url("../../../assets/Images/poções/hp100.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.mp25 {
+  background-image: url("../../../assets/Images/poções/mp25.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+
+}
+
+.mp50 {
+  background-image: url("../../../assets/Images/poções/mp50.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.mp100 {
+  background-image: url("../../../assets/Images/poções/mp100.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.espacamentoPocoes {
+  margin-left: 5vh;
+}
+
+.classRaca {
+  width: 80%;
+  font-family: "Font of Tolkien" !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  margin-bottom: 35px !important;
+}
+
+.overkill {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.BarraExperiencia {
+  text-align: center;
+  width: 90%;
+}

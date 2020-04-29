@@ -1,0 +1,160 @@
+.dados {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.numeroDado {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  margin-left: 112px;
+  margin-top: 90px;
+}
+
+.numeroD6 {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 70px;
+  font-weight: bold;
+  padding-top: 70px;
+  padding-left: 80px;
+}
+
+.rolarDado {
+  margin-top: 10px !important;
+  margin-left: 20px !important;
+  border-radius: 20px !important;
+  background-color: #fab95f !important;
+}
+
+.botoes-rolar {
+  display: grid;
+  grid-template-columns: 40% 10% 40%;
+}
+
+.estiloLabel {
+  font-family: "Font of Tolkien" !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  margin-bottom: 70px !important;
+  text-align: center;
+}
+
+.Atributo {
+  height: 70px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: .2fr .2fr .2fr .2fr .2fr .2fr .2fr;
+}
+
+
+.Button-Roller {
+  font-family: "Font of Tolkien" !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  width: 80% !important;
+  font-size: 20px !important;
+  border-radius: 20px !important;
+  background-color: #fab95f !important;
+}
+
+h2, h5 {
+  text-align: center;
+}
+
+.espaco2 {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.alinhar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.espaco3 {
+  margin-left: 42px;
+}
+
+#somarAtributos {
+  display: none;
+}
+
+.dadosSomadosAtributos {
+  display: grid;
+  grid-template-columns: 30% 36% 15% 20%;
+}
+
+.estiloLabelAtributosDado {
+  font-family: "Font of Tolkien" !important;
+  font-size: 20px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  margin-bottom: 35px !important;
+}
+
+.d4, .d6, .d8, .d10, .d12, .d20 {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.botaoD4 {
+  height: 8vh !important;
+  background-image: url('../../assets/Images/dados/d4.png');
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: 60px;
+}
+
+.botaoD6 {
+  height: 8vh !important;
+  background-image: url('../../assets/Images/dados/d6.png');
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: 56px;
+}
+
+.botaoD8 {
+  height: 8vh !important;
+  background-image: url('../../assets/Images/dados/d8.png');
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: 56px;
+}
+
+.botaoD10 {
+  height: 8vh !important;
+  background-image: url('../../assets/Images/dados/d10.png');
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: 60px;
+  
+}
+
+.botaoD12 {
+  height: 8vh !important;
+  background-image: url('../../assets/Images/dados/d12.png');
+  background-repeat: no-repeat;
+  background-size: 56px;
+}
+
+.botaoD20 {
+  height: 8vh !important;
+  background-image: url('../../assets/Images/dados/d20.png');
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: 60px;
+}
+
+.espacamentoDados {
+  margin-left: 25px;
+}
+
+.alerta {
+  display: none;
+}
