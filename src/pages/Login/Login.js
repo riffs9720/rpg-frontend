@@ -1,20 +1,43 @@
-import React, { Component } from 'react'
+import React, { useCallback } from 'react'
 import Som from '../../components/Musica/Introducao'
 
 import { TextField, Button } from '@material-ui/core'
 import { Form } from 'react-bootstrap';
 
+import { Redirect } from 'react-router-dom';
+
+import useAuth from '../../hooks/useAuth';
+
+import SomeSpinner from '../../components/SomeSpinner';
+
 import './Login.css'
 
-export default class Login extends Component {
-  render(){
+const Login = () => {
+
+  const { signed, signIn, loading } = useAuth();
+
+    const handleSignIn = useCallback( () => {
+        signIn();
+    }, [signIn]);
+
+    
+    if (loading) {
+        return (
+            <div className='loading'>
+                <h1>SignIn Page</h1>
+                <SomeSpinner/>
+            </div>
+        )    
+    }
+
+  
     return (
       <>
     <Som />
     <div className="BackGround">
       <div className="Titulo">Adventures of the Arrombs</div>
       <div className="container">
-        <div></div>
+        <div />
         <div className="Form">
         <Form >
           <TextField
@@ -43,7 +66,11 @@ export default class Login extends Component {
           />
           <div className="botao">
             <div />
-              <Button type="submit" className="botaoLogin" variant="contained" color="primary">Logar</Button>
+            { signed ? (
+                <Redirect to='./user' />
+            ) : (
+                  <Button type="button" className="botaoLogin" variant="contained" onClick={handleSignIn} color="primary">Logar</Button>
+                  )}
             <div />
           </div>
           </Form>
@@ -52,5 +79,6 @@ export default class Login extends Component {
     </div>
   </>
     )
-  }
 }
+
+export default Login;

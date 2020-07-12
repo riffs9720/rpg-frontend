@@ -7,6 +7,7 @@ import {
   Form
 } from "react-bootstrap";
 
+
 import diceD20 from '@iconify/icons-fa-solid/dice-d20';
 import { Icon } from '@iconify/react';
 import logoutIcon from '@iconify/icons-ls/logout';
@@ -54,7 +55,7 @@ export default function BarraNavegacaoMestre() {
             </NavDropdown>
           </Nav>
           <Form inline>
-            <Icon icon={logoutIcon} width="20px" height="20px" />
+            <Icon icon={logoutIcon} width="20px" height="20px" className="botaoLogout" />
           </Form>
         </Navbar.Collapse>
       </Navbar>

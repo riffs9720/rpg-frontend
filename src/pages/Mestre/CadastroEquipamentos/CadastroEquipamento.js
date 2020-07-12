@@ -327,7 +327,7 @@ export default function CadastroEquipamentos() {
               </Box>
               <Box borderRadius={16} {...defaultProps}>
                 <div className="subtrairAtributos">
-                  <h4>Atributos de Soma</h4>
+                  <h4>Atributos de Subtração</h4>
                   <div className="divisorAtributos">
                     <div>
                       <div>
