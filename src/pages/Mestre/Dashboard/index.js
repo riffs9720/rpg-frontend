@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./Dashboard.css";
+import { Container } from "./styles";
 
 import Card1 from '../../../components/Cards/Cartao1'
 import Card2 from '../../../components/Cards/Cartao2'
@@ -10,11 +10,11 @@ import Card5 from '../../../components/Cards/Cartao5'
 import Card6 from '../../../components/Cards/Cartao6'
 import BarraNavegacaoMestre from '../../../components/BarraNavegacao/BarraNavegacaoMestre'
 
-export default function Dashboard() {
+const Dashboard = () => {
     return (
       <>
       <BarraNavegacaoMestre />
-        <div className="container-dashboard">
+        <Container>
           <div className="coluna1">
             <Card1 />
             <div className="espacamentoCards"/>
@@ -30,7 +30,9 @@ export default function Dashboard() {
             <div className="espacamentoCards"/>
             <Card6 />
           </div>
-        </div>
+        </Container>
       </>
     )
 }
+
+export default Dashboard;

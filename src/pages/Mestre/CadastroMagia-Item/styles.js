@@ -1,5 +1,9 @@
-.container-Magia_item {
-  background-image: url("../../../assets/Images/backgroundAlchemyLab.jpg");
+import styled from 'styled-components'
+
+import img from '../../../assets/Images/BackGrounds/backgroundAlchemyLab.jpg'
+
+export const Container = styled.div`
+  background-image: url(${img});
   background-repeat: no-repeat;
   background-size:100%;
   bottom: 0;
@@ -11,9 +15,8 @@
   background-size: cover;
   font-family: "Font of Tolkien";
   font-weight: bold;
-}
 
-.fontesAlquimista {
+  .fontesAlquimista {
   color: #fab95f;
   text-align: center;
 }
@@ -87,3 +90,4 @@
   display: grid;
   grid-template-columns: auto auto auto;
 }
+`

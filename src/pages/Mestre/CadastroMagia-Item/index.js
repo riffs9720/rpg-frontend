@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { TextField, Button } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 
 import BarraNavegacaoMestre from "../../../components/BarraNavegacao/BarraNavegacaoMestre";
 
 
-import "./CadastroMagia-Item.css";
+import { Container } from "./styles";
 
 const defaultProps = {
   m: 1,
@@ -20,7 +19,7 @@ const defaultProps = {
 export default function CadastroEquipamentos() {
   return (
     <>
-    <div className="container-Magia_item">
+    <Container>
     <BarraNavegacaoMestre />
     <h1 className="fontesAlquimista">Bem vindo Mestre alquimista</h1>
     <div className="Magia-Item">
@@ -129,7 +128,7 @@ export default function CadastroEquipamentos() {
       </Box>
       </div>
     </div>
-    </div>
+    </Container>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -29,10 +29,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
+
 export default function Dados() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("none");
+
+  const userId = localStorage.getItem('@authApp: id');
 
   const handleChange = event => {
     setValue(event.target.value);
@@ -45,8 +49,6 @@ export default function Dados() {
   async function rolarD4(e) {
     e.preventDefault();
 
-      var valorDado = document.getElementById("d4");
-      var valorDadoAtri = document.getElementById("d4Atri")
       var numeroAleatorio = Math.floor(Math.random() * 4 + 1);
 
       var ataque = parseInt(document.getElementById("ataque").value);
@@ -63,87 +65,78 @@ export default function Dados() {
 
       if (somarAtributo === "Ataque") {
         if (somaPorcentagem === 0) {
-          valorDadoAtri.value = ataque + numeroAleatorio;
+          setD4Atri(ataque + numeroAleatorio);
         } else {
-          document.getElementById("d4Atri").value = Math.round(
+          setD4Atri(Math.round(
             (somaPorcentagem * (ataque + numeroAleatorio)) / 100 +
             numeroAleatorio +
-              ataque
+              ataque)
           );
         }
       } else if (somarAtributo === "Defesa") {
         if (somaPorcentagem === 0) {
-          valorDadoAtri.value = defesa + numeroAleatorio;
+          setD4Atri(defesa + numeroAleatorio);
         } else {
-          valorDadoAtri.value = Math.round(
+          setD4Atri( Math.round(
             (somaPorcentagem * (defesa + numeroAleatorio)) / 100 +
               numeroAleatorio +
-              defesa
+              defesa)
           );
         }
       } else if (somarAtributo === "Inteligencia") {
         if (somaPorcentagem === 0) {
-          valorDadoAtri.value =
-            inteligencia + numeroAleatorio;
+          setD4Atri(inteligencia + numeroAleatorio);
         } else {
-          valorDadoAtri.value = Math.round(
+          setD4Atri( Math.round(
             (somaPorcentagem * (inteligencia + numeroAleatorio)) / 100 +
               numeroAleatorio +
-              inteligencia
+              inteligencia)
           );
         }
       } else if (somarAtributo === "Resistencia") {
         if (somaPorcentagem === 0) {
-          valorDadoAtri.value =
-            resistencia + numeroAleatorio;
+          setD4Atri(resistencia + numeroAleatorio);
         } else {
-          valorDadoAtri.value = Math.round(
+          setD4Atri(Math.round(
             (somaPorcentagem * (resistencia + numeroAleatorio)) / 100 +
               numeroAleatorio +
-              resistencia
+              resistencia)
           );
         }
       } else if (somarAtributo === "Previsao") {
         if (somaPorcentagem === 0) {
-          valorDadoAtri.value = previsao + numeroAleatorio;
+          setD4Atri( previsao + numeroAleatorio);
         } else { 
-          valorDadoAtri.value = Math.round(
+          setD4Atri( Math.round(
             (somaPorcentagem * (previsao + numeroAleatorio)) / 100 +
               numeroAleatorio +
-              previsao
+              previsao)
           );
         }
       } else if (somarAtributo === "Velocidade") {
         if (somaPorcentagem === 0) {
-          valorDadoAtri.value =
-            velocidade + numeroAleatorio;
+          setD4Atri(velocidade + numeroAleatorio);
         } else {
-          valorDadoAtri.value = Math.round(
+          setD4Atri( Math.round(
             (somaPorcentagem * (velocidade + numeroAleatorio)) / 100 +
               numeroAleatorio +
-              velocidade
+              velocidade)
           );
         }
       }else {
-        valorDadoAtri = numeroAleatorio
-      }
-
-      if(valorDadoAtri < 0){
-        valorDadoAtri = 0;
+        setD4(numeroAleatorio)
       }
 
       await api.put("/player/1", {
-        valorD4: valorDadoAtri.value
+        valorD4: d4
       });
 
-      valorDado.value = numeroAleatorio;
+      setD4(numeroAleatorio)
   }
 
   async function rolarD6(e) {
     e.preventDefault();
 
-    var valorDado = document.getElementById("d6");
-    var valorDadoAtri = document.getElementById("d6Atri");
     var numeroAleatorio = Math.floor(Math.random() * 6 + 1);
 
     var ataque = parseInt(document.getElementById("ataque").value);
@@ -158,85 +151,76 @@ export default function Dados() {
 
     if (somarAtributo === "Ataque") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = ataque + numeroAleatorio;
+        setD6Atri(ataque + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD6Atri(  Math.round(
           (somaPorcentagem * (ataque + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            ataque
+            ataque)
         );
       }
     } else if (somarAtributo === "Defesa") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = defesa + numeroAleatorio;
+        setD6Atri(  defesa + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD6Atri(  Math.round(
           (somaPorcentagem * (defesa + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            defesa
+            defesa)
         );
       }
     } else if (somarAtributo === "Inteligencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          inteligencia + numeroAleatorio;
+        setD6Atri(inteligencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD6Atri(  Math.round(
           (somaPorcentagem * (inteligencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            inteligencia
+            inteligencia)
         );
       }
     } else if (somarAtributo === "Resistencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = resistencia + numeroAleatorio;
+        setD6Atri(  resistencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD6Atri(  Math.round(
           (somaPorcentagem * (resistencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            resistencia
+            resistencia)
         );
       }
     } else if (somarAtributo === "Previsao") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = previsao + numeroAleatorio;
+        setD6Atri(  previsao + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD6Atri(  Math.round(
           (somaPorcentagem * (previsao + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            previsao
+            previsao)
         );
       }
     } else if (somarAtributo === "Velocidade") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = velocidade + numeroAleatorio;
+        setD6Atri(  velocidade + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD6Atri( Math.round(
           (somaPorcentagem * (velocidade + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            velocidade
+            velocidade)
         );
       }
     }else {
-      valorDadoAtri = numeroAleatorio
+      setD6(numeroAleatorio)
     }
-
-    if(valorDadoAtri < 0){
-      valorDadoAtri = 0;
-    }
-
     await api.put("/player/1", {
-      valorD6: valorDadoAtri.value
+      valorD6: d6
     });
 
-    valorDado.value = numeroAleatorio;
+    setD6(numeroAleatorio)
   }
 
   async function rolarD8(e) {
     e.preventDefault();
-
-    var valorDado = document.getElementById("d8");
-    var valorDadoAtri = document.getElementById("d8Atri");
     var numeroAleatorio = Math.floor(Math.random() * 8 + 1);
 
     var ataque = parseInt(document.getElementById("ataque").value);
@@ -251,85 +235,77 @@ export default function Dados() {
 
     if (somarAtributo === "Ataque") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = ataque + numeroAleatorio;
+        setD8Atri(ataque + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD8Atri( Math.round(
           (somaPorcentagem * (ataque + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            ataque
+            ataque)
         );
       }
     } else if (somarAtributo === "Defesa") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = defesa + numeroAleatorio;
+        setD8Atri( defesa + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD8Atri( Math.round(
           (somaPorcentagem * (defesa + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            defesa
+            defesa)
         );
       }
     } else if (somarAtributo === "Inteligencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          inteligencia + numeroAleatorio;
+        setD8Atri(inteligencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD8Atri( Math.round(
           (somaPorcentagem * (inteligencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            inteligencia
+            inteligencia)
         );
       }
     } else if (somarAtributo === "Resistencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = resistencia + numeroAleatorio;
+        setD8Atri( resistencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD8Atri( Math.round(
           (somaPorcentagem * (resistencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            resistencia
+            resistencia)
         );
       }
     } else if (somarAtributo === "Previsao") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = previsao + numeroAleatorio;
+        setD8Atri( previsao + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD8Atri( Math.round(
           (somaPorcentagem * (previsao + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            previsao
+            previsao)
         );
       }
     } else if (somarAtributo === "Velocidade") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = velocidade + numeroAleatorio;
+        setD8Atri( velocidade + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD8Atri(Math.round(
           (somaPorcentagem * (velocidade + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            velocidade
+            velocidade)
         );
       }
     }else {
-      valorDadoAtri = numeroAleatorio
+      setD8(numeroAleatorio)
     }
-
-    if(valorDadoAtri < 0){
-      valorDadoAtri = 0;
-    }
-    
     await api.put("/player/1", {
-      valorD8: valorDadoAtri.value
+      valorD8: d8
     });
     
-    valorDado.value = numeroAleatorio;
+    setD8(numeroAleatorio);
   }
 
   async function rolarD10(e) {
     e.preventDefault();
     
-    var valorDado = document.getElementById("d10");
-    var valorDadoAtri = document.getElementById("d10Atri");
     var numeroAleatorio = Math.floor(Math.random() * 10 + 1);
 
     var ataque = parseInt(document.getElementById("ataque").value);
@@ -344,85 +320,78 @@ export default function Dados() {
 
     if (somarAtributo === "Ataque") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = ataque + numeroAleatorio;
+        setD10Atri(ataque + numeroAleatorio )
       } else {
-        valorDadoAtri.value = Math.round(
+        setD10Atri( Math.round(
           (somaPorcentagem * (ataque + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            ataque
+            ataque)
         );
       }
     } else if (somarAtributo === "Defesa") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = defesa + numeroAleatorio;
+        setD10Atri( defesa + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD10Atri( Math.round(
           (somaPorcentagem * (defesa + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            defesa
+            defesa)
         );
       }
     } else if (somarAtributo === "Inteligencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          inteligencia + numeroAleatorio;
+        setD10Atri(
+          inteligencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD10Atri( Math.round(
           (somaPorcentagem * (inteligencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            inteligencia
+            inteligencia)
         );
       }
     } else if (somarAtributo === "Resistencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          resistencia + numeroAleatorio;
+        setD10Atri(
+          resistencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD10Atri( Math.round(
           (somaPorcentagem * (resistencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            resistencia
+            resistencia)
         );
       }
     } else if (somarAtributo === "Previsao") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = previsao + numeroAleatorio;
+        setD10Atri( previsao + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD10Atri( Math.round(
           (somaPorcentagem * (previsao + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            previsao
+            previsao)
         );
       }
     } else if (somarAtributo === "Velocidade") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = velocidade + numeroAleatorio;
+        setD10Atri( velocidade + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD10Atri( Math.round(
           (somaPorcentagem * (velocidade + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            velocidade
+            velocidade)
         );
       }
     }else {
-      valorDadoAtri = numeroAleatorio
+      setD10(numeroAleatorio) 
     }
-    
-    if(valorDadoAtri < 0){
-      valorDadoAtri = 0;
-    }
-    
     await api.put("/player/1", {
-      valorD10: valorDadoAtri.value
+      valorD10: d10
     });
-    valorDado.value = numeroAleatorio;
+    setD10(numeroAleatorio) 
   }
 
   async function rolarD12(e) {
     e.preventDefault();
     
-    var valorDado = document.getElementById("d12");
-    var valorDadoAtri = document.getElementById("d12Atri");
     var numeroAleatorio = Math.floor(Math.random() * 12 + 1);
 
     var ataque = parseInt(document.getElementById("ataque").value);
@@ -437,86 +406,80 @@ export default function Dados() {
 
     if (somarAtributo === "Ataque") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = ataque + numeroAleatorio;
+        setD12Atri( ataque + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD12Atri( Math.round(
           (somaPorcentagem * (ataque + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            ataque
+            ataque)
         );
       }
     } else if (somarAtributo === "Defesa") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = defesa + numeroAleatorio;
+        setD12Atri( defesa + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD12Atri( Math.round(
           (somaPorcentagem * (defesa + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            defesa
+            defesa)
         );
       }
     } else if (somarAtributo === "Inteligencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          inteligencia + numeroAleatorio;
+        setD12Atri(
+          inteligencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD12Atri( Math.round(
           (somaPorcentagem * (inteligencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            inteligencia
+            inteligencia)
         );
       }
     } else if (somarAtributo === "Resistencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          resistencia + numeroAleatorio;
+        setD12Atri(
+          resistencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD12Atri( Math.round(
           (somaPorcentagem * (resistencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            resistencia
+            resistencia)
         );
       }
     } else if (somarAtributo === "Previsao") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = previsao + numeroAleatorio;
+        setD12Atri( previsao + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD12Atri( Math.round(
           (somaPorcentagem * (previsao + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            previsao
+            previsao)
         );
       }
     } else if (somarAtributo === "Velocidade") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = velocidade + numeroAleatorio;
+        setD12Atri( velocidade + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD12Atri( Math.round(
           (somaPorcentagem * (velocidade + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            velocidade
+            velocidade)
         );
       }
     }else {
-      valorDadoAtri = numeroAleatorio
+      setD12(numeroAleatorio)
     }
-    
-    if(valorDadoAtri < 0){
-      valorDadoAtri = 0;
-    }
-    
+
     await api.put("/player/1", {
-      valorD12: valorDadoAtri.value
+      valorD12: d12
     });
     
-    valorDado.value = numeroAleatorio;
+    setD12(numeroAleatorio)
   }
 
   async function rolarD20(e) {
     e.preventDefault();
 
-    var valorDado = document.getElementById("d20");
-    var valorDadoAtri = document.getElementById("d20Atri");
     var numeroAleatorio = Math.floor(Math.random() * 20 + 1);
 
     var ataque = parseInt(document.getElementById("ataque").value);
@@ -531,85 +494,114 @@ export default function Dados() {
 
     if (somarAtributo === "Ataque") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = ataque + numeroAleatorio;
+        setD20Atri(ataque + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD20Atri( Math.round(
           (somaPorcentagem * (ataque + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            ataque
+            ataque)
         );
       }
     } else if (somarAtributo === "Defesa") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = defesa + numeroAleatorio;
+        setD20Atri( defesa + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD20Atri( Math.round(
           (somaPorcentagem * (defesa + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            defesa
+            defesa)
         );
       }
     } else if (somarAtributo === "Inteligencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          inteligencia + numeroAleatorio;
+        setD20Atri(
+          inteligencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD20Atri( Math.round(
           (somaPorcentagem * (inteligencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            inteligencia
+            inteligencia)
         );
       }
     } else if (somarAtributo === "Resistencia") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value =
-          resistencia + numeroAleatorio;
+        setD20Atri(
+          resistencia + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD20Atri( Math.round(
           (somaPorcentagem * (resistencia + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            resistencia
+            resistencia)
         );
       }
     } else if (somarAtributo === "Previsao") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = previsao + numeroAleatorio;
+        setD20Atri( previsao + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD20Atri( Math.round(
           (somaPorcentagem * (previsao + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            previsao
+            previsao)
         );
       }
     } else if (somarAtributo === "Velocidade") {
       if (somaPorcentagem === 0) {
-        valorDadoAtri.value = velocidade + numeroAleatorio;
+        setD20Atri( velocidade + numeroAleatorio);
       } else {
-        valorDadoAtri.value = Math.round(
+        setD20Atri( Math.round(
           (somaPorcentagem * (velocidade + numeroAleatorio)) / 100 +
             numeroAleatorio +
-            velocidade
+            velocidade)
         );
       }
     }else {
-      valorDadoAtri = numeroAleatorio
-    }
-
-    console.log(valorDadoAtri)
-
-    if(valorDadoAtri < 0){
-      valorDadoAtri = 0;
-    }
-
+      setD20(numeroAleatorio)
+    
     await api.put("/player/1", {
-      valorD20: valorDadoAtri.value
+      valorD20: d20
     });
 
-    valorDado.value = numeroAleatorio;
+    setD20(numeroAleatorio)
   }
+}
+
+  const [ataque, setAtaque] = useState("");
+  const [defesa, setDefesa] = useState("");
+  const [inteligencia, setInteligencia] = useState("");
+  const [resistencia, setResistencia] = useState("");
+  const [previsao, setPrevisao] = useState("");
+  const [velocidade, setVelocidade] = useState("");
+
+  const [d4, setD4] = useState();
+  const [d6, setD6] = useState();
+  const [d8, setD8] = useState();
+  const [d10, setD10] = useState();
+  const [d12, setD12] = useState();
+  const [d20, setD20] = useState();
+
+  const [d4Atri, setD4Atri] = useState();
+  const [d6Atri, setD6Atri] = useState();
+  const [d8Atri, setD8Atri] = useState();
+  const [d10Atri, setD10Atri] = useState();
+  const [d12Atri, setD12Atri] = useState();
+  const [d20Atri, setD20Atri] = useState();
+
 
   const handleOpen = () => {
     setOpen(true);
+    api
+    .get("/player/" + userId)
+    .then(res => {
+      setAtaque(res.data.ataqueAtri)
+      setDefesa(res.data.defesaAtri)
+      setInteligencia(res.data.inteligenciaAtri)
+      setResistencia(res.data.resistenciaAtri)
+      setPrevisao(res.data.previsaoAtri)
+      setVelocidade(res.data.velocidadeAtri)
+    })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
   const handleClose = () => {
@@ -656,7 +648,7 @@ export default function Dados() {
                   <TextField
                     id="ataque"
                     label="Atq"
-                    value="100"
+                    value={ataque}
                     variant="outlined"
                     InputProps={{
                       readOnly: true,
@@ -669,7 +661,7 @@ export default function Dados() {
                   <TextField
                     id="defesa"
                     label="Def"
-                    value="2"
+                    value={defesa}
                     variant="outlined"
                     InputProps={{
                       readOnly: true,
@@ -682,7 +674,7 @@ export default function Dados() {
                   <TextField
                     id="inteligencia"
                     label="Int"
-                    value="3"
+                    value={inteligencia}
                     variant="outlined"
                     InputProps={{
                       readOnly: true,
@@ -695,7 +687,7 @@ export default function Dados() {
                   <TextField
                     id="resistencia"
                     label="Res"
-                    value="4"
+                    value={resistencia}
                     variant="outlined"
                     InputProps={{
                       readOnly: true,
@@ -708,7 +700,7 @@ export default function Dados() {
                   <TextField
                     id="previsao"
                     label="Pre"
-                    value="5"
+                    value={previsao}
                     variant="outlined"
                     InputProps={{
                       readOnly: true,
@@ -721,7 +713,7 @@ export default function Dados() {
                   <TextField
                     id="velocidade"
                     label="Vel"
-                    value="6"
+                    value={velocidade}
                     variant="outlined"
                     InputProps={{
                       readOnly: true,
@@ -794,7 +786,7 @@ export default function Dados() {
                   <TextField
                     id="d4"
                     label="D4"
-                    value=""
+                    value={d4}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -810,7 +802,7 @@ export default function Dados() {
                   <TextField
                     id="d4Atri"
                     label="D4+Atr"
-                    value=""
+                    value={d4Atri}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -830,7 +822,7 @@ export default function Dados() {
                   <TextField
                     id="d8"
                     label="D8"
-                    value=""
+                    value={d8}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -846,7 +838,7 @@ export default function Dados() {
                   <TextField
                     id="d8Atri"
                     label="D8+Atr"
-                    value=""
+                    value={d8Atri}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -866,7 +858,7 @@ export default function Dados() {
                   <TextField
                     id="d12"
                     label="D12"
-                    value=""
+                    value={d12}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -882,7 +874,7 @@ export default function Dados() {
                   <TextField
                     id="d12Atri"
                     label="D12+Atr"
-                    value=""
+                    value={d12Atri}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -904,7 +896,7 @@ export default function Dados() {
                   <TextField
                     id="d6"
                     label="D6"
-                    value=""
+                    value={d6}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -920,7 +912,7 @@ export default function Dados() {
                   <TextField
                     id="d6Atri"
                     label="D6+Atr"
-                    value=""
+                    value={d6Atri}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -940,7 +932,7 @@ export default function Dados() {
                   <TextField
                     id="d10"
                     label="D10"
-                    value=""
+                    value={d10}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -956,7 +948,7 @@ export default function Dados() {
                   <TextField
                     id="d10Atri"
                     label="D10+Atr"
-                    value=""
+                    value={d10Atri}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -976,7 +968,7 @@ export default function Dados() {
                   <TextField
                     id="d20"
                     label="D20"
-                    value=""
+                    value={d20}
                     variant="outlined"
                     type="number"
                     InputProps={{
@@ -992,7 +984,7 @@ export default function Dados() {
                   <TextField
                     id="d20Atri"
                     label="D20+Atr"
-                    value=""
+                    value={d20Atri}
                     variant="outlined"
                     type="number"
                     InputProps={{

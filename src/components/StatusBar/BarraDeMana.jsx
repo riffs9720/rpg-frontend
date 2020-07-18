@@ -9,16 +9,17 @@ export default function BarraDeMana() {
 
   const [mpAtual, setMpAtual] = useState(0)
   const [mpTotal, setMpTotal] = useState(0)
+  const userId = localStorage.getItem('@authApp: id');
 
   useEffect(() => {
-    api.get('/player/1').then((res) => {
+    api.get('/player/' + userId).then((res) => {
     console.log(res)
     setMpAtual(res.data.manaAtual)
     setMpTotal(res.data.manaTotal)
   }).catch(error => {
     console.log(error)
   })
-  },[])
+  },[userId])
 
 let porcMP = (mpAtual / mpTotal) * 100
 

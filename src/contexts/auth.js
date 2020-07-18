@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect, useCallback } from 'react';
-import { signInService } from '../services/auth';
+import React, { createContext, useState, useCallback } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
+import { api } from '../config/api'
 
 
 const AuthContext = createContext({});
@@ -8,49 +8,41 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     
-    const [storageUser, setStorageUser, removeStorageUser] = useLocalStorage('@authApp: user');
-    const [storageToken, setStorageToken, removeStorageToken] = useLocalStorage('@authApp: token');
+    const [storageId, setStorageId, removeStorageId] = useLocalStorage('@authApp: id');
+    const [storageNivel, setStorageNivel, removeStorageNivel] = useLocalStorage('@authApp: nivel');
 
     const [user, setUser] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
+    const signIn = useCallback( async (nome, senha) => {
 
-    useEffect(() => {
-
-        if (storageUser && storageToken) {
-            setUser(storageUser);
-            // api.defaults.headers.Authorization = `Baerer ${storagedToken}`;
-        }
-        setLoading(false);        
-    }, [storageToken, storageUser]);
-
-
-    const signIn = useCallback( async () => {
-    
         setLoading(true);
-        const response = await signInService();
-        setUser(response.user);
-        // api.defaults.headers.Authorization = `Baerer ${response.token}`;
-        setStorageUser(response.user);
-        setStorageToken(response.token);
+        const response = await api.post('/Login', {
+            nome: nome,
+            password: senha,
+        });
+        setStorageId(response.data.id);
+        setUser(response.data);
+        setStorageNivel(response.data.nivelAcesso)
         setLoading(false);
-    }, [setStorageToken, setStorageUser]);
+        
+    }, [setStorageId, setStorageNivel]);
 
     
     const signOut = useCallback( () => {
     
         setLoading(true);
-        removeStorageUser();
-        removeStorageToken()
+        removeStorageId();
+        removeStorageNivel();
         setUser({});
         setLoading(false);
-    }, [removeStorageToken, removeStorageUser]);
+    }, [removeStorageId, removeStorageNivel]);
 
     
     return (
 
         <AuthContext.Provider value={{ 
-            signed: (user && user.name) ? true : false, 
+            signed: (storageId && storageNivel) ? true : false, 
             user, 
             signIn, 
             signOut, 

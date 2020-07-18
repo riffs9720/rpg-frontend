@@ -8,6 +8,15 @@ import Loading from '../components/Loading/index';
 const PrivateRoute = ({ component: Component, ...props }) => {
 
     const { signed, loading } = useAuth();
+    const nivelAcesso = localStorage.getItem('@authApp: nivel');
+
+    let nivel;
+  
+    if(nivelAcesso === '"Mestre"') {
+      nivel = true;
+    }else {
+      nivel = false;
+    }
 
     if (loading) {
         return <Loading />
@@ -17,7 +26,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 
         <Route
             {...props}
-            render={ () => signed
+            render={ () => signed && nivel
                 ? <Component {...props} />
                 : <Redirect to='/Login' /> 
             }

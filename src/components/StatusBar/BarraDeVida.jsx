@@ -9,16 +9,17 @@ export default function BarraDeVida() {
   
   const [hpAtual, setHpAtual] = useState(1000)
   const [hpTotal, setHpTotal] = useState(1000)
+  const userId = localStorage.getItem('@authApp: id');
 
   useEffect(() => {
-    api.get('/player/1').then((res) => {
+    api.get('/player/' + userId).then((res) => {
     console.log(res)
     setHpAtual(res.data.vidaAtual)
     setHpTotal(res.data.vidaTotal)
   }).catch(error => {
     console.log(error)
   })
-  },[])
+  },[userId])
 
 
 

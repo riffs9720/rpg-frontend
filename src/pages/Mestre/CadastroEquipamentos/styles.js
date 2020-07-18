@@ -1,14 +1,17 @@
-.cadastroEquipamento-container {
+import styled from 'styled-components'
+
+import img from '../../../assets/Images/BackGrounds/backgroundForja.jpg'
+
+export const Container = styled.div`
   height: 100vh;
-  background-image: url("../../../assets/Images/backgroundForja.jpg");
+  background-image: url(${img});
   background-repeat: no-repeat;
   background-Position: 'center';
   background-size: cover;
   font-family: "Font of Tolkien";
   font-weight: bold;
-}
 
-.Forja {
+  .Forja {
   text-align: center;
   color: #fab95f;
 }
@@ -95,3 +98,4 @@
   width: 100% !important;
   margin-top: 5vh !important;
 }
+`

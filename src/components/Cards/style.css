@@ -1,0 +1,194 @@
+.pocoes {
+  margin-left: 18vh;
+}
+
+.linhaHp {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto; 
+}
+
+.linhaMp {
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.hp25 {
+  background-image: url("../../assets/Images/poções/hp25.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.hp50 {
+  background-image: url("../../assets/Images/poções/hp50.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.hp100     {
+  background-image: url("../../assets/Images/poções/hp100.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.mp25 {
+  background-image: url("../../assets/Images/poções/mp25.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+
+}
+
+.mp50 {
+  background-image: url("../../assets/Images/poções/mp50.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.mp100 {
+  background-image: url("../../assets/Images/poções/mp100.png");
+  background-repeat: no-repeat;
+  background-Position: 'center';
+  background-size: cover;
+  cursor:pointer;
+  height: 72px;
+  width: 50px;
+}
+
+.espacamentoPocoes {
+  margin-left: 5vh;
+}
+
+.linha1 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 10px;
+}
+
+.linha2 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 8px;
+}
+
+.linha3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 8px;
+}
+
+.linha4 {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  margin-top: 8px;
+}
+
+.xp {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.hp {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.espacamento {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.atualizarPlayer {
+  font-family: "Font of Tolkien" !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+  background-color: #fab95f !important;
+  width: 50% !important;
+}
+
+.carregarPlayer {
+  font-family: "Font of Tolkien" !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+  background-color: #fab95f !important;
+  width: 50% !important;
+}
+
+
+.espacamentoLinha4 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.atributosLinha1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.atributosLinha2 {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+hr {
+  color: #fab95f;
+  height: 5px;
+  background-color: #fab95f;
+}
+
+.estiloInfoPlayer {
+  font-family: "Font of Tolkien" !important;
+  font-size: 18px !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+
+.dadosPlayer {
+  margin-top: 3vh;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+
+.zerarDados {
+  font-family: "Font of Tolkien" !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+  background-color: #fab95f !important;
+  width: 50% !important;
+  margin-top: 20px !important;
+  margin-left: 25% !important;
+}
+
+.HistoriaPersonagem {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.mercadoPocoes {
+  margin-top: 10px;
+}

@@ -9,18 +9,19 @@ export default function BarraDeVida() {
   
   const [xpTotal, setXpTotal] = useState(1000)
   const [xpAtual, setXpAtual] = useState(1000)
+  const userId = localStorage.getItem('@authApp: id');
 
   let porcXp = (xpAtual / xpTotal) * 100
 
   useEffect(() => {
-    api.get('/player/1').then((res) => {
+    api.get('/player/'+ userId).then((res) => {
     console.log(res)
     setXpAtual(res.data.experienciaAtual)
     setXpTotal(res.data.experienciaProximoNivel)
   }).catch(error => {
     console.log(error)
   })
-  },[])
+  },[userId])
 
   return (
     <>

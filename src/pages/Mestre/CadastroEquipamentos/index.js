@@ -10,7 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Box from "@material-ui/core/Box";
 import { api } from "../../../config/api";
 
-import "./CadastroEquipamento.css";
+import { Container } from "./styles";
 
 export default function CadastroEquipamentos() {
 
@@ -71,7 +71,7 @@ export default function CadastroEquipamentos() {
     return (
       <>
         <BarraNavegacaoMestre />
-        <div className="cadastroEquipamento-container">
+        <Container>
           <h1 className="Forja">Bem Vindo a forja!</h1>
           <hr />
           <Form>
@@ -512,7 +512,7 @@ export default function CadastroEquipamentos() {
               <div />
             </div>
           </Form>
-        </div>
+        </Container>
       </>
     );
 }

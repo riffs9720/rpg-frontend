@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { TextField, Button } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Select from "@material-ui/core/Select";
@@ -9,7 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import BarraNavegacaoMestre from "../../../components/BarraNavegacao/BarraNavegacaoMestre";
 
 
-import "./CadastroBestiario.css";
+import { Container } from "./styles";
 
 export default function CadastroEquipamentos() {
 
@@ -28,7 +28,7 @@ export default function CadastroEquipamentos() {
   return (
     <>
       <BarraNavegacaoMestre />
-      <div className="containerBestiario">
+      <Container>
         <h1 className="textoBestiario">Bestiario</h1>
         <div className="divisorBestiario">
         <Box borderColor="#fab95f" borderRadius={16} {...oneLinha}>
@@ -190,7 +190,7 @@ export default function CadastroEquipamentos() {
               </div>
               <div />
             </div>
-      </div>
+      </Container>
     </>
   )
 }

@@ -9,6 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import { Form, Tabs, Tab } from "react-bootstrap";
 import { api } from "../../config/api";
 
+import './style.css';
+
 export default function Cartao1() {
   const [nome, setNome] = useState("Nenhum player carregado");
   const [raca, setRaca] = useState("Raça");
@@ -51,7 +53,7 @@ export default function Cartao1() {
   const handlePocaoHp25 = async e => {
     e.preventDefault();
     if(arrombscoin >= 50){
-      await api.put("/player/1", {
+      await api.put("/player/2", {
       qtdPocaoHp25: qtdPocaoHp25 + 1,
       arrombscoin: arrombscoin - 50
       });
@@ -62,7 +64,7 @@ export default function Cartao1() {
   const handlePocaoHp50 = async e => {
     e.preventDefault();
     if(arrombscoin >= 100){
-      await api.put("/player/1", {
+      await api.put("/player/2", {
       qtdPocaoHp50: qtdPocaoHp50 + 1,
       arrombscoin: arrombscoin - 100
       });
@@ -73,7 +75,7 @@ export default function Cartao1() {
   const handlePocaoHp100 = async e => {
     e.preventDefault();
     if(arrombscoin >= 150){
-      await api.put("/player/1", {
+      await api.put("/player/2", {
         qtdPocaoHp100: qtdPocaoHp100 + 1,
       arrombscoin: arrombscoin - 15
       });
@@ -84,7 +86,7 @@ export default function Cartao1() {
   const handlePocaoMp25 = async e => {
     e.preventDefault();
     if(arrombscoin >= 50){
-      await api.put("/player/1", {
+      await api.put("/player/2", {
       qtdPocaoMp25: qtdPocaoMp25 + 1,
       arrombscoin: arrombscoin - 50
       });
@@ -95,7 +97,7 @@ export default function Cartao1() {
   const handlePocaoMp50 = async e => {
     e.preventDefault();
     if(arrombscoin >= 100){
-      await api.put("/player/1", {
+      await api.put("/player/2", {
       qtdPocaoMp50: qtdPocaoMp50 + 1,
       arrombscoin: arrombscoin - 100
       });
@@ -106,7 +108,7 @@ export default function Cartao1() {
   const handlePocaoMp100 = async e => {
     e.preventDefault();
     if(arrombscoin >= 150){
-      await api.put("/player/1", {
+      await api.put("/player/2", {
         qtdPocaoMp100: qtdPocaoMp100 + 1,
       arrombscoin: arrombscoin - 15
       });
@@ -119,7 +121,7 @@ export default function Cartao1() {
   function handlePlayerCarregar(e) {
     e.preventDefault();
     api
-      .get("/player/1")
+      .get("/player/2")
       .then(res => {
         document.getElementById("Nome").value = res.data.nome;
         document.getElementById("Raca").value = res.data.raca;
@@ -176,21 +178,26 @@ export default function Cartao1() {
       });
   }
 
-  const handleZerarDado = async e => {
+  const handleCarregarDado = async e => {
     e.preventDefault();
-    await api.put("/player/1", {
-      valorD4: 0,
-      valorD6: 0,
-      valorD8: 0,
-      valorD10: 0,
-      valorD12: 0,
-      valorD20: 0
-    });
+    api
+      .get("/player/2")
+      .then(res => {
+        setD4(res.data.valorD4);
+        setD6(res.data.valorD6);
+        setD8(res.data.valorD8);
+        setD10(res.data.valorD10);
+        setD12(res.data.valorD12);
+        setD20(res.data.valorD20);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   const handlePlayerUpdate = async e => {
     e.preventDefault();
-    await api.put("/player/1", {
+    await api.put("/player/2", {
       nome: nome,
       raca: raca,
       classe: classe,
@@ -701,9 +708,9 @@ export default function Cartao1() {
               <Button
                 type="submit"
                 className="zerarDados"
-                onClick={handleZerarDado}
+                onClick={handleCarregarDado}
               >
-                Zerar Dados
+                Carregar Dados
               </Button>
             </Tab>
           </Tabs>

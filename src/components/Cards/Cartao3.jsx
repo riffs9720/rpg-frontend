@@ -9,6 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import { Form, Tabs, Tab } from "react-bootstrap";
 import { api } from '../../config/api'
 
+import './style.css';
+
 export default function Cartao3() {
 
   const [nome, setNome] = useState("Nenhum player carregado");
@@ -52,7 +54,7 @@ export default function Cartao3() {
   const handlePocaoHp25 = async e => {
     e.preventDefault();
     if(arrombscoin >= 50){
-      await api.put("/player/3", {
+      await api.put("/player/4", {
       qtdPocaoHp25: qtdPocaoHp25 + 1,
       arrombscoin: arrombscoin - 50
       });
@@ -63,7 +65,7 @@ export default function Cartao3() {
   const handlePocaoHp50 = async e => {
     e.preventDefault();
     if(arrombscoin >= 100){
-      await api.put("/player/3", {
+      await api.put("/player/4", {
       qtdPocaoHp50: qtdPocaoHp50 + 1,
       arrombscoin: arrombscoin - 100
       });
@@ -74,7 +76,7 @@ export default function Cartao3() {
   const handlePocaoHp100 = async e => {
     e.preventDefault();
     if(arrombscoin >= 150){
-      await api.put("/player/3", {
+      await api.put("/player/4", {
         qtdPocaoHp100: qtdPocaoHp100 + 1,
       arrombscoin: arrombscoin - 15
       });
@@ -85,7 +87,7 @@ export default function Cartao3() {
   const handlePocaoMp25 = async e => {
     e.preventDefault();
     if(arrombscoin >= 50){
-      await api.put("/player/3", {
+      await api.put("/player/4", {
       qtdPocaoMp25: qtdPocaoMp25 + 1,
       arrombscoin: arrombscoin - 50
       });
@@ -96,7 +98,7 @@ export default function Cartao3() {
   const handlePocaoMp50 = async e => {
     e.preventDefault();
     if(arrombscoin >= 100){
-      await api.put("/player/3", {
+      await api.put("/player/4", {
       qtdPocaoMp50: qtdPocaoMp50 + 1,
       arrombscoin: arrombscoin - 100
       });
@@ -107,7 +109,7 @@ export default function Cartao3() {
   const handlePocaoMp100 = async e => {
     e.preventDefault();
     if(arrombscoin >= 150){
-      await api.put("/player/3", {
+      await api.put("/player/4", {
         qtdPocaoMp100: qtdPocaoMp100 + 1,
       arrombscoin: arrombscoin - 15
       });
@@ -120,7 +122,7 @@ export default function Cartao3() {
   function handlePlayerCarregar(e) {
     e.preventDefault();
     api
-      .get("/player/3")
+      .get("/player/4")
       .then(res => {
         document.getElementById("Nome3").value = res.data.nome
         document.getElementById("Raca3").value = res.data.raca
@@ -188,7 +190,7 @@ export default function Cartao3() {
 
   const handlePlayerUpdate = async e => {
     e.preventDefault();
-    await api.put("/player/3", {
+    await api.put("/player/4", {
       nome: nome,
       raca: raca,
       classe: classe,

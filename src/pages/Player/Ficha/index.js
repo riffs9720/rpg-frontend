@@ -21,7 +21,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-import "./Ficha.css";
+import BarraNavegacao from '../../../components/BarraNavegacao/BarraNavegacaoPlayer'
+
+import { Container, SpecsLin1, SpecsLin2, Health, Mana, 
+  EquipmentGrimoreInventory, TitleStatus, Status, Xp, Overkill } from './styles'
 
 const useStyles = makeStyles(theme => ({
   popover: {
@@ -33,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Ficha() {
+  const userId = localStorage.getItem('@authApp: id');
   const [nome, setNome] = useState("Nome");
   const [raca, setRaca] = useState("Raça");
   const [classe, setClasse] = useState("Classe");
@@ -178,141 +182,160 @@ export default function Ficha() {
     setValorBotas(event.target.value);
   };
 
+  const handleBuildSave = async e => {
+    e.preventDefault();
+    let Ataque = document.getElementById("statusTotalAtaque").value
+    let Defesa = document.getElementById("statusTotalDefesa").value
+    let Inteligencia = document.getElementById("statusTotalInteligencia").value
+    let Resistencia = document.getElementById("statusTotalResistencia").value
+    let Previsao = document.getElementById("statusTotalPrevisao").value
+    let Velocidade = document.getElementById("statusTotalVelocidade").value
+
+    await api.put("/player/" + userId, {
+      ataqueAtri: Ataque,
+      defesaAtri: Defesa,
+      inteligenciaAtri: Inteligencia,
+      resistenciaAtri: Resistencia,
+      previsaoAtri: Previsao,
+      velocidadeAtri: Velocidade,
+      });
+  };
+
   async function hp25(e) {
     e.preventDefault();
-    if(hpAtual !== hpTotal){
-      if(qtdPocaoHp25 > 0){
+    if(qtdPocaoHp25 > 0){
+      if(hpAtual !== hpTotal){
         let valor25 = hpTotal * (25 / 100)
       let soma25 = hpAtual + valor25
       if(soma25 > hpTotal){
         soma25 = hpTotal
       }
       
-      await api.put("/player/1", {
+      await api.put("/player/" + userId, {
         qtdPocaoHp25: qtdPocaoHp25 - 1,
         vidaAtual: soma25
         });
         document.location.reload(true);
       }else {
-        alert("Voce não tem poção para usar")
+        alert("Sua vida esta cheia não gaste suas poções")
       }
     }else {
-      alert("Sua vida esta cheia não gaste suas poções")
+      alert("Voce não tem poção para usar")
     }
   }
 
   async function hp50(e) {
     e.preventDefault();
-    if(hpAtual !== hpTotal){
-      if(qtdPocaoHp50 > 0){
+    if(qtdPocaoHp50 > 0){
+      if(hpAtual !== hpTotal){
         let valor50 = hpTotal * (50 / 100)
       let soma50 = hpAtual + valor50
       if(soma50 > hpTotal){
         soma50 = hpTotal
       }
       
-      await api.put("/player/1", {
+      await api.put("/player/" + userId, {
         qtdPocaoHp50: qtdPocaoHp50 - 1,
         vidaAtual: soma50
         });
         document.location.reload(true);
       }else {
-        alert("Voce não tem poção para usar")
+        alert("Sua vida esta cheia não gaste suas poções")
       }
     }else {
-      alert("Sua vida esta cheia não gaste suas poções")
+      alert("Voce não tem poção para usar")
     }
   }
 
   async function hp100(e) {
     e.preventDefault();
-    if(hpAtual !== hpTotal){
-      if(qtdPocaoHp100 > 0){
+    if(qtdPocaoHp100 > 0){
+      if(hpAtual !== hpTotal){
         let valor100 = hpTotal * (100 / 100)
       let soma100 = hpAtual + valor100
       if(soma100 > hpTotal){
         soma100 = hpTotal
       }
       
-      await api.put("/player/1", {
+      await api.put("/player/" + userId, {
         qtdPocaoHp100: qtdPocaoHp100 - 1,
         vidaAtual: soma100
         });
         document.location.reload(true);
       }else {
-        alert("Voce não tem poção para usar")
+        alert("Sua vida esta cheia não gaste suas poções")
       }
     }else {
-      alert("Sua vida esta cheia não gaste suas poções")
+      alert("Voce não tem poção para usar")
     }
   }
 
   async function mp25(e) {
     e.preventDefault();
-    if(mpAtual !== mpTotal){
-      if(qtdPocaoMp25 > 0){
+    if(qtdPocaoMp25 > 0){
+      if(mpAtual !== mpTotal){
         let valor25 = mpTotal * (25 / 100)
       let soma25 = mpAtual + valor25
       if(soma25 > mpTotal){
         soma25 = mpTotal
       }
       
-      await api.put("/player/1", {
+      await api.put("/player/" + userId, {
         qtdPocaoMp25: qtdPocaoMp25 - 1,
         vidaAtual: soma25
         });
         document.location.reload(true);
       }else {
-        alert("Voce não tem poção para usar")
+        alert("Sua mana esta cheia não gaste suas poções")
       }
     }else {
-      alert("Sua mana esta cheia não gaste suas poções")
+      alert("Voce não tem poção para usar")
     }
   }
 
   async function mp50(e) {
     e.preventDefault();
-    if(mpAtual !== mpTotal){
-      if(qtdPocaoMp50 > 0){
+    if(qtdPocaoMp50 > 0){
+      if(mpAtual !== mpTotal){
         let valor50 = mpTotal * (50 / 100)
       let soma50 = mpAtual + valor50
       if(soma50 > mpTotal){
         soma50 = mpTotal
       }
       
-      await api.put("/player/1", {
+      await api.put("/player/" + userId, {
         qtdPocaoMp50: qtdPocaoMp50 - 1,
         vidaAtual: soma50
         });
         document.location.reload(true);
       }else {
-        alert("Voce não tem poção para usar")
+        alert("Sua mana esta cheia não gaste suas poções")
       }
     }else {
-      alert("Sua mana esta cheia não gaste suas poções")
+      alert("Voce não tem poção para usar")
     }
   }
 
   async function mp100(e) {
     e.preventDefault();
-    if(mpAtual !== mpTotal){
-      if(qtdPocaoMp100 > 0){
+    if(qtdPocaoMp100 > 0){
+      if(mpAtual !== mpTotal){
         let valor100 = mpTotal * (100 / 100)
       let soma100 = mpAtual + valor100
       if(soma100 > mpTotal){
         soma100 = mpTotal
       }
       
-      await api.put("/player/1", {
+      await api.put("/player/" + userId, {
         qtdPocaoMp100: qtdPocaoMp100 - 1,
         vidaAtual: soma100
         });
         document.location.reload(true);
       }else {
-        alert("Voce não tem poção para usar")
+        alert("Sua mana esta cheia não gaste suas poções")
       }
     }else {
-      alert("Sua mana esta cheia não gaste suas poções")
+      alert("Voce não tem poção para usar")
     }
   }
 
@@ -487,7 +510,7 @@ export default function Ficha() {
 
   useEffect(() => {
     api
-      .get("/player/" + 1)
+      .get("/player/" + userId)
       .then(res => {
         console.log(res);
         setNome(res.data.nome);
@@ -514,7 +537,7 @@ export default function Ficha() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     console.log(idHelmo);
@@ -844,11 +867,11 @@ export default function Ficha() {
 
   useEffect(() => {
     api
-      .get("/helmo/" + 1)
+      .get("/helmo/" + userId)
       .then(res => {
         setHelmo(
           res.data.map(data => (
-            <MenuItem key={data.id} value={data.id} className="EstiloSelect">
+            <MenuItem key={data.id} value={data.id} className="StyleSelect">
               <LightTooltip
                 title={
                   data.descSomaAtri1 +
@@ -872,7 +895,7 @@ export default function Ficha() {
                 <MenuItem
                   key={data.id}
                   value={data.id}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {data.nomeEquipamento}
                 </MenuItem>
@@ -884,15 +907,15 @@ export default function Ficha() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     api
-      .get("/armadura/" + 1)
+      .get("/armadura/" + userId)
       .then(res => {
         setArmadura(
           res.data.map(data => (
-            <MenuItem key={data.id} value={data.id} className="EstiloSelect">
+            <MenuItem key={data.id} value={data.id} className="StyleSelect">
               <LightTooltip
                 title={
                   data.descSomaAtri1 +
@@ -916,7 +939,7 @@ export default function Ficha() {
                 <MenuItem
                   key={data.id}
                   value={data.id}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {data.nomeEquipamento}
                 </MenuItem>
@@ -928,7 +951,7 @@ export default function Ficha() {
       .catch(error => {
         console.log(error);
       });
-  }, [classes.paper, classes.popover]);
+  }, [classes.paper, classes.popover, userId]);
 
   const LightTooltip = withStyles(theme => ({
     tooltip: {
@@ -943,11 +966,11 @@ export default function Ficha() {
 
   useEffect(() => {
     api
-      .get("/maoDireita/" + 1)
+      .get("/maoDireita/" + userId)
       .then(res => {
         setMaoDireita(
           res.data.map(data => (
-            <MenuItem key={data.id} value={data.id} className="EstiloSelect">
+            <MenuItem key={data.id} value={data.id} className="StyleSelect">
               <LightTooltip
                 title={
                   data.descSomaAtri1 +
@@ -971,7 +994,7 @@ export default function Ficha() {
                 <MenuItem
                   key={data.id}
                   value={data.id}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {data.nomeEquipamento}
                 </MenuItem>
@@ -983,15 +1006,15 @@ export default function Ficha() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     api
-      .get("/maoEsquerda/" + 1)
+      .get("/maoEsquerda/" + userId)
       .then(res => {
         setMaoEsquerda(
           res.data.map(data => (
-            <MenuItem key={data.id} value={data.id} className="EstiloSelect">
+            <MenuItem key={data.id} value={data.id} className="StyleSelect">
               <LightTooltip
                 title={
                   data.descSomaAtri1 +
@@ -1015,7 +1038,7 @@ export default function Ficha() {
                 <MenuItem
                   key={data.id}
                   value={data.id}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {data.nomeEquipamento}
                 </MenuItem>
@@ -1027,15 +1050,15 @@ export default function Ficha() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     api
-      .get("/bota/" + 1)
+      .get("/bota/" + userId)
       .then(res => {
         setBota(
           res.data.map(data => (
-            <MenuItem key={data.id} value={data.id} className="EstiloSelect">
+            <MenuItem key={data.id} value={data.id} className="StyleSelect">
               <LightTooltip
                 title={
                   data.descSomaAtri1 +
@@ -1059,7 +1082,7 @@ export default function Ficha() {
                 <MenuItem
                   key={data.id}
                   value={data.id}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {data.nomeEquipamento}
                 </MenuItem>
@@ -1071,10 +1094,10 @@ export default function Ficha() {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [userId]);
 
   return (
-    <div className="container-ficha">
+    <Container>
       <input id="idHelmo" className="idHelmo" value={valorHelmo} />
       <input id="idArmadura" className="idArmadura" value={valorArmadura} />
       <input
@@ -1088,14 +1111,15 @@ export default function Ficha() {
         value={valorMaoEsquerda}
       />
       <input id="idBota" className="idBota" value={valorBotas} />
-      <div className="lin1">
+      <BarraNavegacao />
+      <SpecsLin1>
         <div>
           <TextField
             id="Nome"
             label="Nome"
             value={nome}
-            InputProps={{ readOnly: true, className: "estiloLabel" }}
-            InputLabelProps={{ className: "estiloLabel" }}
+            InputProps={{ readOnly: true, className: "SpecsInputPropsName" }}
+            InputLabelProps={{ className: "SpecLabelProps" }}
           />
         </div>
         <div>
@@ -1104,8 +1128,8 @@ export default function Ficha() {
             id="Raca"
             label="Raça"
             value={raca}
-            InputProps={{ readOnly: true, className: "classRaca" }}
-            InputLabelProps={{ className: "estiloLabel" }}
+            InputProps={{ readOnly: true, className: "SpecsInputProps" }}
+            InputLabelProps={{ className: "SpecLabelProps" }}
           />
         </div>
         <div>
@@ -1113,8 +1137,8 @@ export default function Ficha() {
             id="Classe"
             label="Classe"
             value={classe}
-            InputProps={{ readOnly: true, className: "classRaca" }}
-            InputLabelProps={{ className: "estiloLabel" }}
+            InputProps={{ readOnly: true, className: "SpecsInputProps" }}
+            InputLabelProps={{ className: "SpecLabelProps" }}
           />
         </div>
         <div>
@@ -1122,40 +1146,40 @@ export default function Ficha() {
             id="standard-disabled"
             label="Arrombscoin"
             value={arrombscoin + " Moedas"}
-            InputProps={{ readOnly: true, className: "classRaca" }}
-            InputLabelProps={{ className: "estiloLabel" }}
+            InputProps={{ readOnly: true, className: "SpecsInputProps" }}
+            InputLabelProps={{ className: "SpecLabelProps" }}
           />
         </div>
-        <div className="BarraExperiencia">
+        <Xp>
           <BarraDeExperiencia/>
-        </div>
-        <div className="overkill">
+        </Xp>
+        <Overkill>
         <TextField
             id="standard-disabled"
             label="OK"
             value="0"
-            InputProps={{ readOnly: true, className: "classRaca" }}
-            InputLabelProps={{ className: "estiloLabel" }}
+            InputProps={{ readOnly: true, className: "SpecsInputProps" }}
+            InputLabelProps={{ className: "SpecLabelProps" }}
           />
           <TextField
             id="standard-disabled"
             label="NV OK"
             value="0"
-            InputProps={{ readOnly: true, className: "classRaca" }}
-            InputLabelProps={{ className: "estiloLabel" }}
+            InputProps={{ readOnly: true, className: "SpecsInputProps" }}
+            InputLabelProps={{ className: "SpecLabelProps" }}
           />
-        </div>
-      </div>
-      <div className="container-ficha2">
+        </Overkill>
+      </SpecsLin1>
+      <SpecsLin2>
         <div>
-          <div className="helth">
+          <Health>
             <BarraDeVida />
-          </div>
+          </Health>
         </div>
         <div>
-          <div className="manna">
+          <Mana>
             <BarraDeMana />
-          </div>
+          </Mana>
         </div>
         <div>
           <TextField
@@ -1163,9 +1187,9 @@ export default function Ficha() {
             label="Ataque"
             value={ataque}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
             InputLabelProps={{
-              className: "estiloLabelAtributos"
+              className: "StyleLabelAtributs "
             }}
           />
         </div>
@@ -1175,9 +1199,9 @@ export default function Ficha() {
             label="Defesa"
             value={defesa}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
             InputLabelProps={{
-              className: "estiloLabelAtributos"
+              className: "StyleLabelAtributs "
             }}
           />
         </div>
@@ -1187,9 +1211,9 @@ export default function Ficha() {
             label="Inteligencia"
             value={inteligencia}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
             InputLabelProps={{
-              className: "estiloLabelAtributos"
+              className: "StyleLabelAtributs "
             }}
           />
         </div>
@@ -1199,9 +1223,9 @@ export default function Ficha() {
             label="Resistencia"
             value={resistencia}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
             InputLabelProps={{
-              className: "estiloLabelAtributos"
+              className: "StyleLabelAtributs "
             }}
           />
         </div>
@@ -1211,9 +1235,9 @@ export default function Ficha() {
             label="Previsao"
             value={previsao}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
             InputLabelProps={{
-              className: "estiloLabelAtributos"
+              className: "StyleLabelAtributs "
             }}
           />
         </div>
@@ -1223,25 +1247,25 @@ export default function Ficha() {
             label="Velocidade"
             value={velocidade}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
             InputLabelProps={{
-              className: "estiloLabelAtributos"
+              className: "StyleLabelAtributs "
             }}
           />
         </div>
-      </div>
-      <div className="equipamentos-grimorio-inventario">
-        <div className="equipamentos">
+      </SpecsLin2>
+      <EquipmentGrimoreInventory>
+        <div className="Equipments">
           <div className="equipamentoCol1">
-            <div className="maoDireita">
-              <FormControl variant="outlined" className="maoDir">
-                <InputLabel className="estiloLabel">Mao Direita</InputLabel>
+            <div className="rightHand">
+              <FormControl variant="outlined" className="Inputs">
+                <InputLabel className="EquipLabelProps">Mao Direita</InputLabel>
                 <Select
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   label="Mao Direita"
                   onChange={handleChangeMaoDireita}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {maoDireita}
                 </Select>
@@ -1249,17 +1273,17 @@ export default function Ficha() {
             </div>
           </div>
           <div className="equipamentoCol2">
-            <h3 className="h3Equipamentos">Equipamentos</h3>
+            <h3>Equipamentos</h3>
             <div className="helmo">
-              <FormControl variant="outlined" className="helm">
-                <InputLabel className="estiloLabel">Helmo</InputLabel>
+              <FormControl variant="outlined" className="Inputs">
+                <InputLabel className="EquipLabelProps">Helmo</InputLabel>
                 <Select
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   label="Helmo"
                   displayEmpty
                   onChange={handleChangeHelmo}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                   InputLabelProps={{ textAlign: "center" }}
                 >
                   {helmo}
@@ -1267,27 +1291,27 @@ export default function Ficha() {
               </FormControl>
             </div>
             <div className="armadura">
-              <FormControl variant="outlined" className="arm">
-                <InputLabel className="estiloLabel">Armadura</InputLabel>
+              <FormControl variant="outlined" className="Inputs">
+                <InputLabel className="EquipLabelProps">Armadura</InputLabel>
                 <Select
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   label="Armadura"
                   onChange={handleChangeArmadura}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {armadura}
                 </Select>
               </FormControl>
             </div>
-            <div className="botas">
-              <FormControl variant="outlined" className="bot">
-                <InputLabel className="estiloLabel">Botas</InputLabel>
+            <div className="bots">
+              <FormControl variant="outlined" className="Inputs">
+                <InputLabel className="EquipLabelProps">Botas</InputLabel>
                 <Select
                   id="Botas"
                   label="Botas"
                   onChange={handleChangeBota}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {bota}
                 </Select>
@@ -1295,15 +1319,15 @@ export default function Ficha() {
             </div>
           </div>
           <div className="equipamentoCol3">
-            <div className="maoEsquerda">
-              <FormControl variant="outlined" className="maoEsq">
-                <InputLabel className="estiloLabel">Mao Esquerda</InputLabel>
+            <div className="leftHand">
+              <FormControl variant="outlined" className="Inputs">
+                <InputLabel className="EquipLabelProps">Mao Esquerda</InputLabel>
                 <Select
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   label="Mao Esquerda"
                   onChange={handleChangeMaoEsquerda}
-                  className="EstiloSelect"
+                  className="StyleSelect"
                 >
                   {maoEsquerda}
                 </Select>
@@ -1311,8 +1335,8 @@ export default function Ficha() {
             </div>
           </div>
         </div>
-        <div className="pocoes">
-          <div className="linhaHp">
+        <div className="potions">
+          <div className="lineHP">
           <Badge badgeContent={qtdPocaoHp25} color="primary">
             <div className="hp25" onClick={hp25} />
           </Badge>
@@ -1326,7 +1350,7 @@ export default function Ficha() {
             <div className="hp100" onClick={hp100} />
             </Badge>
           </div>
-          <div className="linhaMp">
+          <div className="lineMP">
           <Badge badgeContent={qtdPocaoMp25} color="primary">
             <div className="mp25" onClick={mp25} />
             </Badge>
@@ -1341,12 +1365,10 @@ export default function Ficha() {
           </div>
         </div>
         <div>
-          <div className="grimorio-inventario">
-            <h3 className="h3Grimorio">Grimorio</h3>
-            <div className="grimorio">
-              <div />
-              <FormControl variant="outlined" className="grim">
-                <InputLabel className="estiloLabelAtributos">
+            <div className="Grimore">
+              <h3>Grimorio</h3>
+              <FormControl variant="outlined" className="InputGrimore">
+                <InputLabel className="StyleLabelAtributs ">
                   Grimório
                 </InputLabel>
                 <Select
@@ -1364,11 +1386,11 @@ export default function Ficha() {
               </FormControl>
               <div />
             </div>
-            <h3 className="h3Inventario">Inventario</h3>
-            <div className="inventario">
+            <div className="Inventory">
+              <h3>Inventario</h3>
               <div />
-              <FormControl variant="outlined" className="inv">
-                <InputLabel className="estiloLabelAtributos">
+              <FormControl variant="outlined" className="InputInventory">
+                <InputLabel className="StyleLabelAtributs ">
                   Inventario
                 </InputLabel>
                 <Select
@@ -1386,19 +1408,18 @@ export default function Ficha() {
               </FormControl>
               <div />
             </div>
-          </div>
         </div>
-      </div>
-      <h3 className="h3Status">Status Total</h3>
-      <div className="linhaBotoes">
+      </EquipmentGrimoreInventory>
+      <TitleStatus>Status Total</TitleStatus>
+      <Status>
         <div>
           <TextField
             id="statusTotalAtaque"
             label="Ataque"
             value={valorStatusTotalAta}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
-            InputLabelProps={{ className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
+            InputLabelProps={{ className: "StyleLabelAtributs " }}
           />
         </div>
         <div>
@@ -1407,8 +1428,8 @@ export default function Ficha() {
             label="Defesa"
             value={valorStatusTotalDef}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
-            InputLabelProps={{ className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
+            InputLabelProps={{ className: "StyleLabelAtributs " }}
           />
         </div>
         <div>
@@ -1417,8 +1438,8 @@ export default function Ficha() {
             label="Inteligencia"
             value={valorStatusTotalInt}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
-            InputLabelProps={{ className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
+            InputLabelProps={{ className: "StyleLabelAtributs " }}
           />
         </div>
         <div>
@@ -1427,8 +1448,8 @@ export default function Ficha() {
             label="Resistencia"
             value={valorStatusTotalRes}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
-            InputLabelProps={{ className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
+            InputLabelProps={{ className: "StyleLabelAtributs " }}
           />
         </div>
         <div>
@@ -1437,8 +1458,8 @@ export default function Ficha() {
             label="Previsao"
             value={valorStatusTotalPre}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
-            InputLabelProps={{ className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
+            InputLabelProps={{ className: "StyleLabelAtributs " }}
           />
         </div>
         <div>
@@ -1447,17 +1468,17 @@ export default function Ficha() {
             label="Velocidade"
             value={valorStatusTotalVel}
             variant="outlined"
-            InputProps={{ readOnly: true, className: "estiloLabelAtributos" }}
-            InputLabelProps={{ className: "estiloLabelAtributos" }}
+            InputProps={{ readOnly: true, className: "StyleLabelAtributs " }}
+            InputLabelProps={{ className: "StyleLabelAtributs " }}
           />
         </div>
         <Dados />
         <div>
-          <Button variant="contained" color="primary" className="botaoBuid">
+          <Button variant="contained" className="buttonBuid" onClick={handleBuildSave}>
             Salvar Build
           </Button>
         </div>
-      </div>
-    </div>
+      </Status>
+    </Container>
   );
 }

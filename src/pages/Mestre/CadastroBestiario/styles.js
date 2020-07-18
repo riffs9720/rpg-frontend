@@ -1,14 +1,17 @@
-.containerBestiario {
+import styled from 'styled-components'
+
+import img from '../../../assets/Images/BackGrounds/backgroundBestiario.jpg'
+
+export const Container = styled.div`
   height: 100vh;
-  background-image: url("../../../assets/Images/backgroundBestiario.jpg");
+  background-image: url(${img});
   background-repeat: no-repeat;
   background-Position: 'center';
   background-size: cover;
   font-family: "Font of Tolkien";
   font-weight: bold;
-}
 
-.textoBestiario {
+  .textoBestiario {
   color: #fab95f;
 }
 
@@ -76,3 +79,4 @@
   display: grid;
   grid-template-columns: auto auto auto;
 }
+`

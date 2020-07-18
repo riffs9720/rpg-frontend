@@ -9,7 +9,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import "./CadastroPlayer.css";
+import { Container } from "./styles";
 
 class CadastroPlayer extends Component {
   state = {
@@ -57,7 +57,7 @@ class CadastroPlayer extends Component {
     return (
       <>
       <BarraNavegacaoMestre />
-      <div className="cadastroPlayer-container">
+      <Container>
         <Form onSubmit={this.handlePlayerSave}>
           <h1>Contrato de inicio de Jornada</h1>
           <div className="separador">
@@ -88,7 +88,7 @@ class CadastroPlayer extends Component {
               />
               </div>
               <div className="Raca">
-              <FormControl variant="outlined" className="maoDir">
+              <FormControl variant="outlined" className="Raca">
                     <InputLabel className="estiloLabelContrato">
                       Raça:
                     </InputLabel>
@@ -315,7 +315,7 @@ class CadastroPlayer extends Component {
             </div>
           </div>
         </Form>
-      </div>
+      </Container>
       </>
     );
   }
