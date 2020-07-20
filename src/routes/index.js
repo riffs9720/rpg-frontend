@@ -13,6 +13,7 @@ import CadastroBestiario from '../pages/Mestre/CadastroBestiario/'
 import CadastroMagia_Item from '../pages/Mestre/CadastroMagia-Item/'
 import NotFound from '../pages/NotFound/'
 import Redirecionador from '../pages/Redirecionador/'
+import ListagemBestiario from '../pages/Mestre/ListagemBestiario'
 
 const Routes = () => (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const Routes = () => (
             <Route component={Login} exact path="/Login"/>
             <Route component={Login} exact path="/"/>
             <Route component={NotFound} exact path="/404" />
+            <Route component={ListagemBestiario} exact path="/ListagemBestiario" />
             <PrivateRoute component={NotFound} exact path="/404" />
             <MestreRoute component={Dashboard} exact path="/Mestre-Dashboard" />
             <PrivateRoute component={Ficha} exact path="/Player-Ficha" />
