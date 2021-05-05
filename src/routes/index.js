@@ -26,7 +26,7 @@ const Routes = () => (
             <MestreRoute component={Dashboard} exact path="/Mestre-Dashboard" />
             <PrivateRoute component={Ficha} exact path="/Player-Ficha" />
             <PrivateRoute component={Redirecionador} exct path="/Redirecionador" />
-            <MestreRoute component={CadastroPlayer} exact path="/Mestre-CadastroDePlayer" />
+            <Route component={CadastroPlayer} exact path="/Mestre-CadastroDePlayer" />
             <MestreRoute component={CadastroEquipamento} exact path="/Mestre-CadastroDeEquipamento" />
             <MestreRoute component={CadastroBestiario} exact path="/Mestre-CadastroBestiario" />
             <MestreRoute component={CadastroMagia_Item} exact path="/Mestre-CadastroMagia_Item" />
